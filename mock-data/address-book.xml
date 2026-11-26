@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Directory service export (LDIF-style) — office address book.
+     NOTE: internal network pointer columns kept for legacy clients. -->
+<addressBook exportedAt="2026-10-30">
+  <group name="信息中心">
+    <entry>
+      <name>机房值班机</name>
+      <netAddr>10.170.2.243</netAddr>
+      <phone>0531-xxxx</phone>
+    </entry>
+    <entry>
+      <name>应急指挥终端</name>
+      <netAddr>10.20.128.228</netAddr>
+      <phone>0531-xxxx</phone>
+    </entry>
+    <entry>
+      <name>集中监控台</name>
+      <netAddr>10.254.229.3</netAddr>
+    </entry>
+  </group>
+  <group name="综合部">
+    <entry>
+      <name>办公区打印服务器</name>
+      <netAddr>10.150.112.43</netAddr>
+    </entry>
+    <entry>
+      <name>档案数字化终端</name>
+      <netAddr>10.20.17.189</netAddr>
+    </entry>
+  </group>
+  <group name="运维">
+    <entry>
+      <name>堡垒机-区县接入</name>
+      <netAddr>10.254.51.157</netAddr>
+    </entry>
+    <entry>
+      <name>监控平台-前置</name>
+      <netAddr>10.170.1.49</netAddr>
+    </entry>
+  </group>
+</addressBook>
