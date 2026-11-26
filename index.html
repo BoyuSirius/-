@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>未知资产发现测试</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+      background: #f0f4f8;
+      color: #1f2937;
+      min-height: 100vh;
+    }
+    header {
+      background: linear-gradient(135deg, #0b5394, #1468b0);
+      color: #fff;
+      padding: 20px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,.15);
+    }
+    header .title { font-size: 20px; font-weight: 700; letter-spacing: 1px; }
+    header .sub { font-size: 12px; opacity: .85; margin-top: 4px; }
+    header .badge {
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.35);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+    }
+    main { max-width: 1200px; margin: 24px auto; padding: 0 20px; }
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.08);
+    }
+    .card h2 {
+      font-size: 15px;
+      color: #0b5394;
+      border-left: 4px solid #0b5394;
+      padding-left: 10px;
+      margin-bottom: 16px;
+    }
+    .row { display: flex; align-items: flex-end; gap: 12px; flex-wrap: wrap; }
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field label { font-size: 12px; color: #6b7280; }
+    .field input, .field select {
+      height: 38px;
+      padding: 0 10px;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font-size: 14px;
+      min-width: 260px;
+      background: #fff;
+      color: inherit;
+    }
+    .field input:focus, .field select:focus { outline: none; border-color: #0b5394; }
+    button {
+      height: 38px;
+      padding: 0 22px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .btn-primary { background: #0b5394; color: #fff; }
+    .btn-primary:hover { background: #1468b0; }
+    .btn-danger  { background: #b91c1c; color: #fff; }
+    .btn-danger:hover { background: #dc2626; }
+    .btn-ghost  { background: #e5e7eb; color: #374151; }
+    .btn-ghost:hover { background: #d1d5db; }
+    .chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+    .chips .chip {
+      background: #eef2f7;
+      border: 1px solid #d1dbe8;
+      border-radius: 14px;
+      padding: 4px 12px;
+      font-size: 12px;
+      color: #0b5394;
+      cursor: pointer;
+      user-select: none;
+    }
+    .chips .chip.active { background: #0b5394; color: #fff; border-color: #0b5394; }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+    }
+    .stat {
+      background: #f8fafc;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 14px 16px;
+      text-align: center;
+    }
+    .stat .num { font-size: 26px; font-weight: 700; color: #0b5394; }
+    .stat.unknown .num { color: #b91c1c; }
+    .stat .desc { font-size: 12px; color: #6b7280; margin-top: 4px; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th, td {
+      text-align: left;
+      padding: 10px 12px;
+      border-bottom: 1px solid #eef1f4;
+    }
+    th { background: #f8fafc; color: #374151; font-weight: 600; white-space: nowrap; }
+    tr:hover td { background: #f5f9ff; }
+    .tag {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+    }
+    .tag.unknown { background: #fee2e2; color: #b91c1c; }
+    .tag.known   { background: #dcfce7; color: #15803d; }
+    #progress-wrap { display: none; margin-top: 14px; }
+    #progress-bar {
+      height: 8px;
+      background: #e5e7eb;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    #progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #0b5394, #2f9df6);
+      transition: width .2s;
+    }
+    #progress-text { font-size: 12px; color: #6b7280; margin-top: 6px; }
+    .toolbar { display: flex; justify-content: flex-end; gap: 10px; margin-top: 14px; }
+    .empty { text-align: center; color: #9ca3af; padding: 30px 0; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <div class="title">未知资产发现测试</div>
+      <div class="sub" id="project-info"></div>
+    </div>
+    <div class="badge">未知资产发现测试</div>
+  </header>
+
+  <main>
+  <h1>中国铁塔股份有限公司山东省分公司</h1>
+  <h2>配置数据均为虚拟数据测试使用，无数据泄露风险</h2>
+  </main>
+</body>
+</html>
